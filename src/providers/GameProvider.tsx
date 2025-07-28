@@ -37,7 +37,7 @@ const useMoves = (slots: number[][], expires: number[][], setSlot: (x:number, y:
     const playMove = (x: number, y: number, player: number) => { 
         const existingPlayCol =  slots[x][y];
         const expiring = expires[x][y];
-        if (existingPlayCol > 0 && expiring > 0) {
+        if (existingPlayCol > 0 && expiring > 1) {
             throw new ReferenceError(`Spot already played by ${PlayerCharacter(existingPlayCol)}`);
         }
         setSlot(x,y,player);

@@ -82,12 +82,14 @@ button:focus-visible {
   user-select: none;
 }
 
-.cell.unused:not(.gameover)
+.cell.unused:not(.gameover),
+.cell.expiring:not(.gameover)
 {
   cursor: pointer;
 }
 
-.cell.unused:hover:not(.gameover)
+.cell.unused:hover:not(.gameover),
+.cell.expiring:hover:not(.gameover)
 { 
   border: 1px solid green;
   background-color:#6e6e6e

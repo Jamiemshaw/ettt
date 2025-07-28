@@ -5,7 +5,16 @@ const GameBoard = () => {
     const { slots, expires, gameOver, PlayTurn } = useGameContext();
 
     const Cell = ({rowindex, colindex, player} : {rowindex: number, colindex: number, player: number}) => { 
-        return (<div className={`cell ${player > 0 ? '' : 'unused'} ${gameOver ? 'gameover' : ''} ${expires[rowindex][colindex] === 1 ? 'expiring': ''}`} onClick={() => !gameOver && PlayTurn([rowindex, colindex])}><span title={expires[rowindex][colindex].toString()}>{PlayerCharacter(player)}</span></div>);
+        var gameOverClass = gameOver ? 'gameover' : '';
+        var isExpring = expires[rowindex][colindex] === 1;
+        var expiringClass = isExpring ? 'expiring': '';
+        var unusedClass = player > 0 ? '' : 'unused';
+        return (<div 
+            className={`cell ${unusedClass} ${gameOverClass} ${expiringClass}`} 
+            onClick={() => !gameOver && PlayTurn([rowindex, colindex])}>
+                <span title={expires[rowindex][colindex].toString()}>{PlayerCharacter(player)}</span>
+            </div>
+        );
     }
 
     const Container = () => { 
